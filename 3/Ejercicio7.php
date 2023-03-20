@@ -44,15 +44,3 @@ foreach($ciudades as $ciudad){
 
 
 
-
-
-
-<?php
-
-
-
-
-
-
-
-?>
