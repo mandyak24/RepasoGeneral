@@ -1,0 +1,42 @@
+/* Clases para el fondo */
+.amarillo {
+    background-color: lightyellow;
+}
+
+.verde {
+    background-color: lightgreen;
+}
+
+.rosa {
+    background-color: lightpink;
+}
+
+.azul {
+    background-color: lightblue;
+}
+
+/* Clases para el color de fuente*/
+.naranja {
+    color: orange;
+}
+
+.morado {
+    color: purple;
+}
+
+.negro {
+    color: black;
+}
+
+.rojo {
+    color: red;
+}
+
+/* Modificar la fuente */
+.negrita {
+    font-weight: bold;
+}
+
+.cursiva {
+    font-style: italic;
+}
