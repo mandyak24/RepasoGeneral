@@ -13,10 +13,10 @@
 <form method="POST" action="login.php">
    
     <label for="usuario">User:</label><br>
-    <input type="text" id="usuario" name="usuario" value="<?php if(isset($_POST['usuario'])){ echo $_POST['usuario']; }?>"><br>
+    <input type="text" id="usuario" name="usuario" value="<?php if(isset($usuario)){ echo $usuario; }?>"><br>
     
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" value="<?php if(isset($_POST['usuario'])){ echo $_POST['password']; }?>" ><br>
+    <input type="password" id="password" name="password" value="<?php if(isset($password)){ echo $password;}?>" ><br>
     
     <input type="submit" name="login" value="Login"><br><br>
 </form>
@@ -40,6 +40,7 @@ if (mysqli_num_rows($resultado) == 1) {
     // Iniciar sesión y redirigir a la página de bienvenida
     session_start();
     $_SESSION["usuario"] = $usuario;
+    setcookie('visitas',1,time()+3600*24);
     header("Location: bienvenida.php");
     exit();
 } else {
