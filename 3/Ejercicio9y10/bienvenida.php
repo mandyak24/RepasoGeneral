@@ -20,7 +20,8 @@
 <?php 
     if(isset($_GET['usuario'])){
         $usuario=$_GET['usuario'];
-        echo "Bienvenido, $usuario";
+        echo "Bienvenido $usuario<br>";
+        echo "<a href='nuevoarticulo.php'>Nuevo articulo</a>";
     }else{
         echo "Error: Usuario no especificado";
     }
