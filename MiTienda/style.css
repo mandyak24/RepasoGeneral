@@ -1,10 +1,8 @@
 /* Estilo para el formulario de inicio de sesión */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Raleway:wght@500&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body{
     text-align:center;
-    font-family: 'Raleway', sans-serif;
+    font-family:'Roboto', sans-serif;
     background-color:transparent;
     /* linear-gradient(to right, #8360c3, #2ebf91); */
     background-repeat: no-repeat;
@@ -12,7 +10,7 @@ body{
     background-size: cover;
     margin-top: 50px; 
 }
-form {
+.formularioLogin {
     background-color: #90e0ef;
     border: 1px solid whitesmoke;
     border-radius: 5%;
@@ -22,7 +20,7 @@ form {
     height: 250px;
   
   }
-  label {
+  .labelLogin {
     display: block;
     font-weight: bold;
     font-size: 18px;
@@ -42,7 +40,7 @@ form {
   
   /* Estilo para el botón de inicio de sesión */
   input[type=submit] {
-    background-color: #036666;
+    background-color: lightsalmon;
     color: #03045e;
     font-weight: bold;
     font-size: 17px;
@@ -71,8 +69,9 @@ form {
   
   /* Estilo para el encabezado de la página de inicio de sesión */
   h2{
-    color:lightseagreen;
+    color:darkblue;
     font-weight: bold;
+    font-size:80px;
     margin-bottom: 30px;
   }
 
@@ -86,6 +85,9 @@ form {
   }
   
  
+
+/* NAVBAR */
+/* Bolsa de la compra */
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -94,36 +96,22 @@ form {
   'opsz' 48
 }
 
-/* navbar */
-
   nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
+    background-color:lightblue;
+    padding:5px;
    }
-  
-  .container {
-    width: 100%;
-    margin: 0 auto;
-  }
-  
   .menu {
+    list-style: none;
     margin:0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     list-style-type: none;
   
   }
   
   .menu li {
-    margin: 40px;
-    text-align:center;
-    padding:50px;
-
-   
+    margin-top:5px;
+    padding:5px 5px;
   }
   
   .menu li a {
@@ -133,7 +121,13 @@ form {
     text-decoration: none;
   }
 
- 
+  .left {
+    margin-right: auto;
+  }
+  
+  .right {
+    margin-left: auto;
+  }
 
 
   /* Menu productos */
@@ -155,7 +149,8 @@ form {
      
   }
 
-  button{
+   
+    button{
     height:40px;
     width: 100px;
     background-color: #90e0ef;
@@ -163,6 +158,26 @@ form {
     font-size: 15px;
     border-radius: 12px;
     border:2px solid lightgray;
+    margin-top: 10px;
   }
 
+  mark{
+    background-color:lightcoral;
+  }
 
+  label{
+    font-size:12px;
+    text-align:right;
+    font-weight: bold;
+  }
+
+  input[type=number]{
+    margin-top: 10px;
+    width:100px;
+    background-color:lightblue;
+  }
+
+  p{
+    font-weight: bold;
+   
+  }

@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <h2>ONLINE SHOP</h2>
-<form method="POST" action="login.php">
+    <h2>ServiTech</h2>
+<form class="formularioLogin" method="POST" action="login.php">
    
-    <label for="usuario">User:</label><br>
+    <label class="labelLogin" for="usuario">User:</label><br>
     <input type="text" id="usuario" name="usuario" value="<?php if(isset($usuario)){ echo $usuario; }?>"><br>
     
-    <label for="password">Password:</label><br>
+    <label class="labelLogin" for="password">Password:</label><br>
     <input type="password" id="password" name="password" value="<?php if(isset($password)){ echo $password;}?>" ><br>
     
     <input type="submit" name="login" value="Login"><br><br>
