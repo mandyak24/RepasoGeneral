@@ -48,7 +48,9 @@ foreach($productos as $id => $producto){
         $cantidad = $_POST['cantidad'];
         $precio = $producto['precio'];
 
-        echo $precio;
+        echo "Nombre Producto: " .$nombre ."<br>";
+        echo "Precio: " .$precio ."<br>";
+        echo "Cantidad " .$cantidad ."<br>";
         // Realizar otras acciones con los datos del producto
         break; // Salir del bucle después de encontrar el producto
     }
