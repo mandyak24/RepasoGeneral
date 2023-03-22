@@ -41,7 +41,7 @@ if (mysqli_num_rows($resultado) == 1) {
     session_start();
     $_SESSION["usuario"] = $usuario;
     setcookie('visitas',1,time()+3600*24);
-    header("Location: bienvenida.php");
+    header("Location: menuPrincipal.php");
     exit();
 } else {
     // El usuario o la contraseña son incorrectos
