@@ -1,8 +1,33 @@
 <?php
 // inicia la sesión
 session_start();
+// comprueba si el usuario está logueado
 if(!isset($_SESSION["usuario"])){
     header("Location:login.php?redirigido=true");
+}
+// incluye el archivo de conexión a la base de datos
+require "conn.php";
+// consulta a la base de datos
+$conn=conectar();
+
+$sql = "SELECT * FROM productos  ORDER BY id_producto ASC";
+$resultado = mysqli_query($conn, $sql);
+
+// Crea un array vacío para almacenar los productos
+$productos = array();
+
+// Recorre los resultados de la consulta SQL
+while ($fila = mysqli_fetch_assoc($resultado)) {
+    // Crea un nuevo elemento de array para el producto
+    $producto = array();
+
+    // Agrega la información del producto en un array asociativo
+    $producto['nombre'] = $fila['nombre_producto'];
+    $producto['precio'] = $fila['precio'];
+    $producto['stock'] = $fila['stock'];
+    // Usa el id del producto como clave del elemento de array
+    $productos[$fila['id_producto']] = $producto;
+
 }
 ?>
 
@@ -34,103 +59,125 @@ if(!isset($_SESSION["usuario"])){
 <!-- PLACAS BASE -->
 <div class="grid-container">
   <div class="grid-item">
-    <img src="img/placa1.jpg" alt="Placa base">
-    <p>MSI MPG B550 GAMING PLUS </p>
-    <p><mark>Precio: $99.99</mark></p>
-    <form method="POST" action="agregar_carrito.php">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="1">Añadir al carrito</button>
-    </form>
+    <img src="img/1.jpg">
+    <p><?php echo $productos[1]['nombre']; ?></p>
+    <p><?php echo $productos[1]['precio'] ." &#8364;"; ?></p>
+      <form method="POST" action="agregar_carrito.php">
+        <input type="hidden" name="id_producto" value="1">
+        <input type="hidden" name="nombre" value="<?php echo $productos[1]['nombre']; ?>">
+        <input type="hidden" name="precio" value="<?php echo $productos[1]['precio']; ?>">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" min="1" max="<?php echo $productos[1]['stock']?>"><br>
+        <button type="submit" name="producto1">Añadir al carrito</button>
+      </form>
+  </div>
+  
+  <div class="grid-item">
+    <img src="img/2.jpg">
+    <p><?php echo $productos[2]['nombre']; ?></p>
+    <p><?php echo $productos[2]['precio'] ." &#8364;"; ?></p>
+      <form method="POST" action="agregar_carrito.php">
+        <input type="hidden" name="id_producto" value="2">
+        <input type="hidden" name="nombre" value="<?php echo $productos[2]['nombre']; ?>">
+        <input type="hidden" name="precio" value="<?php echo $productos[2]['precio']; ?>">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" min="1" max="<?php echo $productos[2]['stock']?>"><br>
+        <button type="submit" name="producto2">Añadir al carrito</button>
+      </form>
   </div>
   <div class="grid-item">
-    <img src="img/placa2.jpg" alt="Placa base">
-    <p>Placa Base AMD Ryzen AM5 ATX</p>
-    <p><mark>Precio: $99.99</mark></p>
+    <img src="img/3.jpg">
+    <p><?php echo $productos[3]['nombre']; ?></p>
+    <p><?php echo $productos[3]['precio'] ." &#8364;"; ?></p>
     <form method="POST" action="agregar_carrito.php">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="2">Añadir al carrito</button>
-    </form>
-  </div>
-  <div class="grid-item">
-    <img src="img/placa3.jpg" alt="Placa Base">
-    <p>ASUS TUF Gaming B550M-PLUS WiFi II</p>
-    <p><mark>Precio: $99.99</mark></p>
-    <form method="POST" action="agregar_carrito.php">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="3">Añadir al carrito</button>
+      <input type="hidden" name="id_producto" value="3">
+      <input type="hidden" name="nombre" value="<?php echo $productos[3]['nombre']; ?>">
+      <input type="hidden" name="precio" value="<?php echo $productos[3]['precio']; ?>">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" name="cantidad" id="cantidad" min="1" max="<?php echo $productos[3]['stock']?>"><br>
+      <button type="submit" name="producto3">Añadir al carrito</button>
     </form>
   </div>
   <!-- PROCESADORES -->
   <div class="grid-item">
-    <img src="img/cpu1.jpg" alt="Procesador">
-    <p>AMD Ryzen 7 5800X Procesador</p>
-    <p><mark>Precio: $99.99</mark></p>
+    <img src="img/4.jpg">
+    <p><?php echo $productos[4]['nombre']; ?></p>
+    <p><?php echo $productos[4]['precio'] ." &#8364;"; ?></p>
     <form method="POST" action="agregar_carrito.php">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="4" id="4">Añadir al carrito</button>
+      <input type="hidden" name="id_producto" value="4">
+      <input type="hidden" name="nombre" value="<?php echo $productos[4]['nombre']; ?>">
+      <input type="hidden" name="precio" value="<?php echo $productos[4]['precio']; ?>">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" name="cantidad" min="1" max="<?php echo $productos[4]['stock']?>"><br>
+      <button type="submit" name="producto4">Añadir al carrito</button>
     </form>
   </div>
   <div class="grid-item">
-    <img src="img/cpu2.jpg" alt="Procesador">
-    <p>Intel CPU I9 12900F Box LGA 1700 </p>
-    <p><mark>Precio: $99.99</mark></p>
+    <img src="img/5.jpg">
+    <p><?php echo $productos[5]['nombre']; ?></p>
+    <p><?php echo $productos[5]['precio'] ." &#8364;"; ?></p>
     <form method="POST" action="agregar_carrito.php">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="5" id="5">Añadir al carrito</button>
+      <input type="hidden" name="id_producto" value="5">
+      <input type="hidden" name="nombre" value="<?php echo $productos[5]['nombre']; ?>">
+      <input type="hidden" name="precio" value="<?php echo $productos[5]['precio']; ?>">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" name="cantidad" min="1" max="<?php echo $productos[5]['stock']?>"><br>
+      <button type="submit" name="producto5">Añadir al carrito</button>
     </form>
   </div>
   <div class="grid-item">
-    <img src="img/cpu3.jpg" alt="Procesador">
-    <p>AMD Procesador Ryzen 7 5700X</p>
-    <p><mark>Precio: $99.99</mark></p>
+    <img src="img/6.jpg">
+    <p><?php echo $productos[6]['nombre']; ?></p>
+    <p><?php echo $productos[6]['precio'] ." &#8364;"; ?></p>
     <form method="POST" action="agregar_carrito.php">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="6" id="6">Añadir al carrito</button>
+      <input type="hidden" name="id_producto" value="6">
+      <input type="hidden" name="nombre" value="<?php echo $productos[6]['nombre']; ?>">
+      <input type="hidden" name="precio" value="<?php echo $productos[6]['precio']; ?>">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" name="cantidad" min="1" max="<?php echo $productos[6]['stock']?>"><br>
+      <button type="submit" name="producto6">Añadir al carrito</button>
     </form>
   </div>
   <!-- RAM -->
   <div class="grid-item">
-    <img src="img/ram1.jpg" alt="RAM">
-    <p>Corsair Vengeance RGB PRO 16 GB </p>
-    <p><mark>Precio: $99.99</mark></p>
+    <img src="img/7.jpg">
+    <p><?php echo $productos[7]['nombre']; ?></p>
+    <p><?php echo $productos[7]['precio'] ." &#8364;"; ?></p>
     <form method="POST" action="agregar_carrito.php">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="7" id="7">Añadir al carrito</button>
+      <input type="hidden" name="id_producto" value="7">
+      <input type="hidden" name="nombre" value="<?php echo $productos[7]['nombre']; ?>">
+      <input type="hidden" name="precio" value="<?php echo $productos[7]['precio']; ?>">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" name="cantidad" min="1" max="<?php echo $productos[7]['stock']?>"><br>
+      <button type="submit" name="producto7">Añadir al carrito</button>
     </form>
   </div>
   <div class="grid-item">
-    <img src="img/ram2.jpg" alt="RAM">
-    <p>Corsair Vengeance SODIMM 32GB </p>
-    <p><mark>Precio: $99.99</mark></p>
+    <img src="img/8.jpg">
+    <p><?php echo $productos[8]['nombre']; ?></p>
+    <p><?php echo $productos[8]['precio'] ." &#8364;"; ?></p>
     <form method="POST" action="agregar_carrito.php">
+    <input type="hidden" name="id_producto" value="8">
+      <input type="hidden" name="nombre" value="<?php echo $productos[8]['nombre']; ?>">
+      <input type="hidden" name="precio" value="<?php echo $productos[8]['precio']; ?>">
     <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="8" id="8">Añadir al carrito</button>
+    <input type="number" name="cantidad" min="1" max="<?php echo $productos[8]['stock']?>"><br>
+    <button type="submit" name="producto8">Añadir al carrito</button>
     </form>
   </div>
   <div class="grid-item">
-    <img src="img/ram3.jpg" alt="RAM">
-    <p>Kingston FURY Beast RGB 32GB</p>
-    <p><mark>Precio: $99.99</mark></p>
+    <img src="img/9.jpg">
+    <p><?php echo $productos[9]['nombre']; ?></p>
+    <p><?php echo $productos[9]['precio'] ." &#8364;"; ?></p>
     <form method="POST" action="agregar_carrito.php">
+    <input type="hidden" name="id_producto" value="9">
+      <input type="hidden" name="nombre" value="<?php echo $productos[9]['nombre']; ?>">
+      <input type="hidden" name="precio" value="<?php echo $productos[9]['precio']; ?>">
     <label for="cantidad">Cantidad:</label>
-    <input type="number" name="cantidad" id="cantidad"><br>
-    <button type="submit" name="9" id="9">Añadir al carrito</button>
+    <input type="number" name="cantidad" min="1" max="<?php echo $productos[9]['stock']?>"><br>
+    <button type="submit" name="producto9">Añadir al carrito</button>
     </form>
   </div>
 </div>
-
-
-
-
-
 </body>
 </html>
-
