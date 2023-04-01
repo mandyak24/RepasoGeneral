@@ -1,3 +1,6 @@
+<?php
+include 'global/conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,25 +39,44 @@
 </body>
 </html>
 
-<?php
-require_once 'Conexion.php';
 
-if(isset($_POST['login'])) {
+<!-- Codigo para verificar usuario  -->
+<?php
+
+if(isset($_POST['login'])){
     $usuario = $_POST['usuario'];
     $contrasena= $_POST['contrasena'];
-    $conexion = new Conexion();
-    $pdo = $conexion->getConnection();
     
-    if($conexion->verificarUsuario($usuario, $contrasena)) {
-        session_start();
-        $_SESSION['usuario'] = $usuario;
-        setcookie("username", "$usuario", time() + (86400 * 30), "/"); 
-        setcookie("password", "$contrasena", time() + (86400 * 30), "/"); 
-        header("Location:./menuPrincipal.php");
+    if(verificarUsuario($usuario,$contrasena)){
+        header("Location:./index.php");
         exit();
-    } else {
-        echo "El usuario o la contraseña son incorrectos";
+    }else{
+        $mensaje_error="Usuario o contraseña incorrectos";
     }
 }
+
+function verificarUsuario($usuario,$contrasena){
+    global $pdo;
+    $sentencia = $pdo->prepare("SELECT * FROM usuarios WHERE usuario = :usuario AND password = :contrasena");
+    $sentencia->bindParam(':usuario',$usuario);
+    $sentencia->bindParam(':contrasena',$contrasena);
+    $sentencia->execute();
+    $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
+    if($resultado){
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        $_SESSION['ID']=$resultado['ID'];
+        return true;
+    }else{
+        echo "<script>alert('Usuario o contraseña incorrectos')</script>";
+        return false;
+    }
+}
+
+
+
+    
+
 
 ?>
