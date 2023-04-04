@@ -8,7 +8,10 @@ include('templates/header.php');
         <br>
         <?php if($mensaje!=""){ ?>
         <div class="alert alert-success">
-            <?php echo $mensaje; ?>
+            <?php echo $mensaje ."<br>";
+             if(isset($_COOKIE['ultimaConexion'])){
+                echo "Ultima conexion: ".$_COOKIE['ultimaConexion'];
+            }?>
             <a href="mostrarCarrito.php" class="badge badge-success">Ver carrito</a>
         </div>
         <?php } ?>

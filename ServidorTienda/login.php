@@ -64,6 +64,7 @@ function verificarUsuario($usuario,$contrasena){
     $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
     if($resultado){
         if (session_status() !== PHP_SESSION_ACTIVE) {
+            setcookie("ultimaConexion",date("Y-m-d H:i:s"),time()+86400);
             session_start();
         }
         $_SESSION['ID']=$resultado['ID'];

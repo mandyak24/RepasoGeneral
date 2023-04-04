@@ -7,6 +7,8 @@ include("carrito.php");
 
 <br>
 <h3>Lista del carrito</h3><br>
+
+<br>
 <?php if (!empty($_SESSION['carrito'])) { ?>
     <table class="table table-light table-bordered">
         <tbody>

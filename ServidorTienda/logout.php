@@ -4,14 +4,15 @@
 session_start();
 //Limpiamos los datos
 $_SESSION=array();
+
+//Eliminar las cookies
+if(isset($_COOKIE["ultimaConexion"])) {
+    setcookie("ultimaConexion", '', time() - 3600);
+}
 //Eliminamos la sesion 
 session_destroy();
 
-// if(isset($_COOKIE["usuario"]) AND isset($_COOKIE["contrasena"])){
-//     setcookie("usuario", '', time() - (3600));
-//     setcookie("contrasena", '', time() - (3600));
-// }
-
+//Redirigimos al usuario a la pagina de login
 header("Location:login.php");
 ?> 
 
