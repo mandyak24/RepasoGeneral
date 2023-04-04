@@ -27,6 +27,9 @@
                     <a class="nav-link" href="mostrarCarrito.php">Carrito(<?php echo (empty($_SESSION['carrito']))?0:count($_SESSION['carrito']) ?>)</a>
                 </li>
                 <li class="nav-item active">
+                    <a class="nav-link" href="perfilUsuario.php">Mi perfil</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="logout.php">Cerrar sesión</a>
                 </li>
             </ul>

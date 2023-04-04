@@ -72,7 +72,7 @@ if(isset($_POST['btnAccion'])){
             case "Eliminar":
                 if(is_numeric($_POST['ID'])){
                     $ID = $_POST['ID'];
-                    foreach($_SESSION['carrito'] as $indice=>$producto){
+                    foreach($_SESSION['carrito'] as $indice=>$producto){ //Recorre todos los productos del carrito
                         if($producto['ID']==$ID){
                             unset($_SESSION['carrito'][$indice]);
                             $_SESSION['carrito']=array_values($_SESSION["carrito"]); 

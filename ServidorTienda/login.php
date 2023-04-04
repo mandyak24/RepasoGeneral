@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'global/conexion.php';
 ?>
 <!DOCTYPE html>
@@ -46,6 +47,7 @@ include 'global/conexion.php';
 if(isset($_POST['login'])){
     $usuario = $_POST['usuario'];
     $contrasena= $_POST['contrasena'];
+
     
     if(verificarUsuario($usuario,$contrasena)){
         header("Location:./index.php");
@@ -68,7 +70,9 @@ function verificarUsuario($usuario,$contrasena){
             session_start();
         }
         $_SESSION['ID']=$resultado['ID'];
-        return true;
+        //Añadiendolo a sesion podemos acceder al saldo desde cualquier pagina en la que este iniciada la sesión.
+       $_SESSION['Saldo']=$resultado['Saldo'];
+       return true; 
     }else{
         echo "<script>alert('Usuario o contraseña incorrectos')</script>";
         return false;
