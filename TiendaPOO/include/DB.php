@@ -1,4 +1,5 @@
 <?php
+//Clase que interactua con la base de datos.
 class DB
 {
     //Atributos 
@@ -97,7 +98,7 @@ class DB
                 setcookie("ultimaConexion", date("Y-m-d H:i:s"), time() + 86400);
                 session_start();
             }
-            // $_SESSION['ID']=$resultado['ID'];
+            //$_SESSION['ID']=$resultado['ID'];
             //Añadiendolo a sesion podemos acceder al saldo desde cualquier pagina en la que este iniciada la sesión.
             ///$_SESSION['Saldo']=$resultado['Saldo'];
             return true;

@@ -1,4 +1,5 @@
 <?php
+// Las instancias de esta clase representan los productos que se venden en la tienda.
 class Producto extends DB
 {
 

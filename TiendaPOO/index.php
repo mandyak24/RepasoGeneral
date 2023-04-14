@@ -25,8 +25,8 @@ include "carrito.php";
     ?>
     <?php foreach ($listaProductos as $producto) { ?>
         <div class="col-4">
-            <div class="card m-3">
-                <img title="<?php echo $producto['Nombre'] ?>" alt="<?php echo $producto['Nombre'] ?>" class="img-fluid" style="height:250px;" src="img/<?php echo $producto['ID'] ?>.jpg">
+            <div class="card m-4">
+                <img title="<?php echo $producto['Nombre'] ?>" alt="<?php echo $producto['Nombre'] ?>" class="img-fluid mx-auto" style="height:50%; width:50%; " src="img/<?php echo $producto['ID'] ?>.jpg">
                 <div class="card-body">
                     <span><?php echo $producto['Nombre'] ?></span>
                     <h5 class="card title"><?php echo $producto['Precio'] . " &euro;" ?></h5>

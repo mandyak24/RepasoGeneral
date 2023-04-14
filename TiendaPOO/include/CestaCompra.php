@@ -1,4 +1,5 @@
 <?php
+//Clase que gestiona los productos que escoge el cliente de la tienda para comprar.
 include "DB.php";
 include "Producto.php";
 class CestaCompra extends Producto{
